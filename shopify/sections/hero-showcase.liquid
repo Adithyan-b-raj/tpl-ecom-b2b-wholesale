@@ -1,0 +1,13 @@
+<section class="bmad-hero" style="--color-primary: {{ section.settings.primary_color }};">
+  <h1>{{ section.settings.heading | default: "APEX INDUSTRIAL B2B" }}</h1>
+  <p>{{ section.settings.subheading | default: "Direct factory bulk ordering with tiered MOQ slab pricing & instant GST proforma invoices." }}</p>
+</section>
+{% schema %}
+{
+  "name": "APEX INDUSTRIAL B2B Hero",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Brand Heading", "default": "APEX INDUSTRIAL B2B" },
+    { "type": "color", "id": "primary_color", "label": "Primary Accent", "default": "#2563EB" }
+  ]
+}
+{% endschema %}
