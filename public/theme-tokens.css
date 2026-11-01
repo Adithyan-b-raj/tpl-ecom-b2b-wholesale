@@ -1,17 +1,31 @@
-/* Extracted via tpl-tools-design-extractor for tpl-ecom-b2b-wholesale */
+/* ==========================================================================
+   BMAD Normalized Design Tokens & Movement Blueprint (theme-tokens.css)
+   Movement  : [E] Industrial Tabular Data-First Order Sheet
+   Archetype : B2B Industrial Fastener & Wholesale SKU Matrix (McMaster-Carr / Uline / DigiKey)
+   Reference : https://www.mcmaster.com
+   Contract  : whitelabel-and-showroom-contract.md §2 + design-movements-and-layout-blueprints.md
+   ========================================================================== */
+
 :root {
   --font-primary: 'Inter', sans-serif;
-  --font-accent: 'Space Grotesk', sans-serif;
-  --color-primary: #2563EB;
+  --font-accent: 'IBM Plex Mono', monospace;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --color-primary: #D97706;
   --brand-primary: var(--color-primary);
+
   --color-dark: #0F172A;
   --brand-dark: var(--color-dark);
+
   --bg-main: #F8FAFC;
-  --bg-canvas: #EFF6FF;
+  --bg-canvas: #FFFFFF;
   --bg-sand: var(--bg-canvas);
+
   --border-color: #CBD5E1;
-  --grid-gap-desktop: 28px 22px;
-  --grid-gap-mobile: 16px 14px;
-  --radius: 6px;
+  --border-structural: 1px solid #CBD5E1;
+  --shadow-token: none;
+  --grid-gap-desktop: 1px;
+  --grid-gap-mobile: 1px;
+  --radius: 2px;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
