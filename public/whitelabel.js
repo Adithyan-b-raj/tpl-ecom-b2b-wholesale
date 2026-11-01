@@ -40,6 +40,7 @@
     if (params.has('dark')) updated.dark = sanitizeHex(params.get('dark'));
     if (params.has('bg')) updated.bg = sanitizeHex(params.get('bg'));
     if (params.has('wa')) updated.wa = sanitizePhone(params.get('wa'));
+    if (params.has('phone')) updated.wa = sanitizePhone(params.get('phone'));
     if (params.has('logo')) updated.logo = params.get('logo').trim();
 
     try {

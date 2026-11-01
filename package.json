@@ -1,0 +1,22 @@
+{
+  "name": "tpl-ecom-b2b-wholesale",
+  "version": "1.0.0",
+  "description": "B2B Wholesale, Hardware & Industrial Distributor Spec Matrix (Movement E)",
+  "type": "module",
+  "scripts": {
+    "test": "node test-verification.mjs",
+    "dev": "wrangler pages dev public",
+    "deploy": "wrangler pages deploy public --project-name=tpl-ecom-b2b-wholesale --branch=main"
+  },
+  "keywords": [
+    "bmad",
+    "b2b",
+    "wholesale",
+    "fasteners",
+    "mcmaster-carr",
+    "industrial-matrix",
+    "cloudflare-pages"
+  ],
+  "author": "Adithyan-b-raj",
+  "license": "UNLICENSED"
+}

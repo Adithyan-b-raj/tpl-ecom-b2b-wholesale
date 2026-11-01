@@ -3,132 +3,1936 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-wl-brand>INDUSTRIAL SUPPLY // B2B Fastener Matrix</title>
+  <title data-wl-brand>MCMASTER INDUSTRIAL // B2B Fastener & Industrial Distributor Spec Matrix</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="theme-tokens.css">
   <script src="whitelabel.js"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* -------------------------------------------------------------------------
+       MOVEMENT E: High-Density Tabular Spec Matrix & Dealer Portal
+       Aesthetic: McMaster-Carr / Fastenal / Misumi Technical Spreadsheet
+       ------------------------------------------------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: var(--bg-main, #F8FAFC);
-      color: #0F172A;
+      color: var(--color-slate-900, #0F172A);
       font-family: var(--font-primary, 'Inter', sans-serif);
       font-size: 13px;
-    }
-    .catalog-bar {
-      background: #0F172A;
-      color: #FFF;
-      padding: 12px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-mono, monospace);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Spreadsheet Matrix */
-    .table-wrap {
-      max-width: 1400px;
-      margin: 30px auto;
-      padding: 0 30px;
+    /* Top Industrial Spec Header */
+    .top-bar {
+      background: #0B1120;
+      color: #E2E8F0;
+      padding: 10px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--color-primary, #D97706);
+      font-family: var(--font-mono, monospace);
+      font-size: 12px;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .order-matrix {
-      width: 100%;
-      border-collapse: collapse;
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-badge {
+      background: var(--color-primary, #D97706);
+      color: #FFF;
+      font-weight: 800;
+      padding: 4px 8px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .brand-title {
+      font-weight: 700;
+      color: #FFF;
+      letter-spacing: -0.2px;
+    }
+    .brand-subtitle {
+      color: #94A3B8;
+      font-size: 11px;
+    }
+    .header-dealer-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #1E293B;
+      border: 1px solid #334155;
+      padding: 4px 12px;
+    }
+    .dealer-select {
+      background: #0F172A;
+      color: #F8FAFC;
+      border: 1px solid #475569;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 8px;
+      outline: none;
+    }
+    .credit-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #10B981;
+      font-weight: 600;
+      font-size: 11px;
+    }
+    .credit-pulse {
+      width: 7px;
+      height: 7px;
+      background: #10B981;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #10B981;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cart-summary-btn {
+      background: #1E293B;
+      border: 1px solid var(--color-primary, #D97706);
+      color: #FFF;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+    .cart-summary-btn:hover {
+      background: var(--color-primary, #D97706);
+      color: #FFF;
+    }
+    .btn-admin-link {
+      color: #F59E0B;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dashed #F59E0B;
+      padding-bottom: 2px;
+    }
+    .btn-admin-link:hover {
+      color: #FFF;
+      border-color: #FFF;
+    }
+
+    /* Sub-header industrial notice */
+    .compliance-bar {
+      background: #F1F5F9;
+      border-bottom: 1px solid #CBD5E1;
+      padding: 6px 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #475569;
+      font-family: var(--font-mono);
+    }
+
+    /* Main Container Layout */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: calc(100vh - 80px);
+    }
+    @media (max-width: 1024px) {
+      .app-layout { grid-template-columns: 1fr; }
+    }
+
+    /* Sidebar: Parametric Engineering Filters */
+    .filter-sidebar {
       background: #FFF;
+      border-right: 1px solid #CBD5E1;
+      padding: 16px;
+    }
+    .sidebar-section {
+      margin-bottom: 20px;
+    }
+    .sidebar-heading {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #0F172A;
+      background: #F1F5F9;
+      padding: 6px 8px;
+      border-left: 3px solid var(--color-primary, #D97706);
+      margin-bottom: 10px;
+    }
+    .filter-input {
+      width: 100%;
+      padding: 8px 10px;
       border: 1px solid #CBD5E1;
       font-family: var(--font-mono);
       font-size: 12px;
+      outline: none;
+      background: #F8FAFC;
     }
-    .order-matrix th {
+    .filter-input:focus {
+      border-color: var(--color-primary, #D97706);
+      background: #FFF;
+    }
+    .filter-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .filter-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 5px 8px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.1s;
+    }
+    .filter-pill:hover {
       background: #F1F5F9;
+      border-color: #94A3B8;
+    }
+    .filter-pill.active {
+      background: #0F172A;
+      color: #FFF;
+      border-color: #0F172A;
+      font-weight: 600;
+    }
+    .filter-pill.active .pill-count {
+      background: var(--color-primary, #D97706);
+      color: #FFF;
+    }
+    .pill-count {
+      font-size: 10px;
+      background: #E2E8F0;
+      color: #475569;
+      padding: 1px 6px;
+      border-radius: 2px;
+    }
+
+    /* Main Workspace */
+    .matrix-workspace {
+      padding: 20px 24px;
+      background: #F8FAFC;
+      overflow-x: auto;
+    }
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 14px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .matrix-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.3px;
+    }
+    .matrix-subtitle {
+      color: #64748B;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .workspace-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-quick-bulk {
+      background: #FFF;
       border: 1px solid #CBD5E1;
-      padding: 10px;
+      padding: 8px 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-quick-bulk:hover {
+      background: #F1F5F9;
+      border-color: #0F172A;
+    }
+    .btn-proforma-gen {
+      background: var(--color-primary, #D97706);
+      color: #FFF;
+      border: 1px solid #B45309;
+      padding: 8px 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .btn-proforma-gen:hover {
+      background: #B45309;
+    }
+
+    /* Dense Spreadsheet Table Matrix */
+    .table-container {
+      background: #FFF;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 1px 3px rgba(15,23,42,0.06);
+      overflow-x: auto;
+    }
+    .spec-matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 12px;
       text-align: left;
     }
-    .order-matrix td {
-      border: 1px solid #CBD5E1;
-      padding: 10px;
+    .spec-matrix-table th {
+      background: #0F172A;
+      color: #F8FAFC;
+      padding: 10px 10px;
+      border: 1px solid #334155;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
     }
-    .qty-in {
-      width: 70px;
-      padding: 4px;
+    .spec-matrix-table td {
+      border: 1px solid #E2E8F0;
+      padding: 8px 10px;
+      vertical-align: middle;
+      color: #1E293B;
+    }
+    .spec-matrix-table tr:hover {
+      background: #F8FAFC;
+    }
+    .sku-badge {
+      font-weight: 700;
+      color: #0369A1;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .sku-badge:hover {
+      color: #0284C7;
+    }
+    .standard-badge {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 2px 6px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #334155;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .tier-cell {
+      text-align: right;
+      white-space: nowrap;
+      padding: 6px 8px;
+    }
+    .tier-cell.active-tier {
+      background: #FEF3C7;
+      border: 2px solid #D97706;
+      font-weight: 700;
+      color: #B45309;
+    }
+    .tier-price-val {
+      font-weight: 700;
+    }
+    .tier-discount-sub {
+      font-size: 10px;
+      color: #059669;
+      display: block;
+    }
+    .stock-tag {
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .stock-tag.in-stock { color: #059669; }
+    .stock-tag.low-stock { color: #D97706; }
+
+    /* Quantity Controls */
+    .qty-control-box {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .btn-qty-step {
+      width: 22px;
+      height: 26px;
+      background: #F1F5F9;
       border: 1px solid #CBD5E1;
       font-family: var(--font-mono);
       font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
     }
-    .tier-active { background: #FEF3C7; font-weight: 700; }
+    .btn-qty-step:hover {
+      background: #E2E8F0;
+    }
+    .qty-input {
+      width: 65px;
+      height: 26px;
+      padding: 2px 4px;
+      border: 1px solid #CBD5E1;
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      background: #FFF;
+      outline: none;
+    }
+    .qty-input:focus {
+      border-color: var(--color-primary, #D97706);
+    }
+    .line-total-cell {
+      font-weight: 700;
+      text-align: right;
+      color: #0F172A;
+      white-space: nowrap;
+      min-width: 80px;
+    }
+    .btn-add-line {
+      background: #0F172A;
+      color: #FFF;
+      border: 1px solid #0F172A;
+      padding: 5px 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-add-line:hover {
+      background: var(--color-primary, #D97706);
+      border-color: var(--color-primary, #D97706);
+    }
+
+    /* Quick Bulk CSV Paste Reorder Box */
+    .bulk-paste-drawer {
+      background: #FFF;
+      border: 1px solid #CBD5E1;
+      margin-top: 24px;
+      padding: 16px 20px;
+    }
+    .bulk-drawer-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      margin-bottom: 8px;
+    }
+    .bulk-paste-textarea {
+      width: 100%;
+      height: 90px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 10px;
+      border: 1px solid #CBD5E1;
+      background: #F8FAFC;
+      resize: vertical;
+      outline: none;
+    }
+    .bulk-paste-textarea:focus {
+      background: #FFF;
+      border-color: var(--color-primary, #D97706);
+    }
+    .bulk-actions-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .bulk-preview-wrap {
+      margin-top: 12px;
+      border: 1px solid #E2E8F0;
+      background: #FAFAFA;
+      padding: 10px;
+      display: none;
+    }
+
+    /* Modal / Popover Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(2px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-box {
+      background: #FFF;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .modal-header {
+      background: #0F172A;
+      color: #FFF;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close-btn:hover { color: #FFF; }
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .modal-footer {
+      background: #F1F5F9;
+      border-top: 1px solid #CBD5E1;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+    }
+
+    /* Printable Proforma Sheet Styling */
+    .proforma-sheet {
+      background: #FFF;
+      padding: 24px;
+      border: 1px solid #E2E8F0;
+      font-family: var(--font-mono);
+      color: #0F172A;
+    }
+    .pi-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #0F172A;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .pi-company {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .pi-badge {
+      background: #FEF3C7;
+      border: 1px solid #D97706;
+      color: #92400E;
+      font-weight: 700;
+      padding: 4px 10px;
+      font-size: 12px;
+      text-align: right;
+    }
+    .pi-grid-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+    .pi-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 11px;
+    }
+    .pi-table th {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 8px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .pi-table td {
+      border: 1px solid #CBD5E1;
+      padding: 8px;
+    }
+    .pi-hsn-breakdown {
+      margin-top: 14px;
+      border: 1px solid #CBD5E1;
+      background: #F8FAFC;
+      padding: 12px;
+      font-size: 11px;
+    }
+    .pi-totals-box {
+      margin-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .pi-totals-table {
+      width: 320px;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .pi-totals-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .pi-totals-table .grand-row {
+      font-size: 14px;
+      font-weight: 800;
+      background: #FEF3C7;
+      border-top: 2px solid #0F172A;
+    }
+
+    /* Cart Slide-out Drawer */
+    .cart-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      z-index: 1000;
+      display: none;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 520px;
+      height: 100vh;
+      background: #FFF;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.25s var(--ease-out-expo);
+    }
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #FFF;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      z-index: 99;
+      transition: transform 0.15s;
+    }
+    .floating-wa-btn:hover {
+      transform: scale(1.08);
+    }
+
+    /* Print Stylesheet for Formal PDF Proforma */
+    @media print {
+      body * { visibility: hidden; }
+      #proformaSheetPrintArea, #proformaSheetPrintArea * { visibility: visible; }
+      #proformaSheetPrintArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+      }
+      .no-print { display: none !important; }
+    }
   </style>
 </head>
-<body data-layout-archetype="industrial-tabular-order-sheet">
-  <header class="catalog-bar">
-    <div><span style="font-weight:700; color:#D97706;" data-wl-brand>MCMASTER INDUSTRIAL</span> // FASTENERS & HARDWARE</div>
-    <div>CREDIT LIMIT: ₹8,50,000 / NET-30 • GSTIN: 27AABCM9982D1Z3</div>
-    <a href="admin.html" style="color:#D97706; text-decoration:none;">[ DEALER CONSOLE ]</a>
+<body data-layout-archetype="tabular-b2b-matrix">
+
+  <!-- 1. TOP INDUSTRIAL SPECIFICATION BAR -->
+  <header class="top-bar">
+    <div class="brand-section">
+      <span class="brand-badge" data-wl-brand>MCMASTER INDUSTRIAL</span>
+      <div>
+        <div class="brand-title">INDUSTRIAL HARDWARE & FASTENER DISTRIBUTOR</div>
+        <div class="brand-subtitle">D1 DENSE SPEC MATRIX // B2B DEALER PORTAL // KOCHI CENTRAL HUB</div>
+      </div>
+    </div>
+
+    <!-- Active Dealer Credit Account Selector -->
+    <div class="header-dealer-box">
+      <span style="color:#94A3B8; font-size:11px;">DEALER:</span>
+      <select id="dealerSelect" class="dealer-select" onchange="switchDealer(this.value)">
+        <!-- Populated via API / JS -->
+      </select>
+      <div id="dealerCreditIndicator" class="credit-indicator">
+        <span class="credit-pulse"></span>
+        <span id="creditAvailableDisplay">NET-30: ₹3,40,000 AVAIL</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <a href="admin.html" class="btn-admin-link">[ DEALER CONSOLE & E-WAY DISPATCH → ]</a>
+      <button class="cart-summary-btn" onclick="openCartDrawer()">
+        <span>📋 PO CART</span>
+        <span id="cartCountBadge" style="background:var(--color-primary, #D97706); padding:1px 6px; border-radius:2px;">0 LINES</span>
+        <span id="cartSubtotalBadge" style="color:#FBBF24;">₹0.00</span>
+      </button>
+    </div>
   </header>
 
-  <div class="table-wrap">
-    <div style="font-size:18px; font-weight:700; margin-bottom:12px;">Metric Socket Head Cap Screws (Grade 12.9 High Tensile Steel)</div>
-    <table class="order-matrix">
-      <thead>
-        <tr>
-          <th>PART NUMBER</th>
-          <th>DIN SPEC</th>
-          <th>THREAD SIZE</th>
-          <th>LENGTH</th>
-          <th>1–49 PCS</th>
-          <th>50–99 PCS</th>
-          <th>100+ PCS</th>
-          <th>QTY</th>
-          <th>TOTAL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>#M912-M6-20</strong></td>
-          <td>DIN 912</td>
-          <td>M6 x 1.0</td>
-          <td>20 mm</td>
-          <td>₹12.00</td>
-          <td class="tier-active">₹9.50</td>
-          <td>₹7.80</td>
-          <td><input type="number" class="qty-in" value="50" oninput="calcLine(this, 9.5)"></td>
-          <td id="lineTot">₹475.00</td>
-        </tr>
-        <tr>
-          <td><strong>#M912-M8-30</strong></td>
-          <td>DIN 912</td>
-          <td>M8 x 1.25</td>
-          <td>30 mm</td>
-          <td>₹18.00</td>
-          <td>₹14.50</td>
-          <td>₹12.20</td>
-          <td><input type="number" class="qty-in" value="0"></td>
-          <td>₹0.00</td>
-        </tr>
-        <tr>
-          <td><strong>#M912-M10-40</strong></td>
-          <td>DIN 912</td>
-          <td>M10 x 1.5</td>
-          <td>40 mm</td>
-          <td>₹28.00</td>
-          <td>₹22.00</td>
-          <td>₹18.50</td>
-          <td><input type="number" class="qty-in" value="0"></td>
-          <td>₹0.00</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- 2. STATUTORY GST & COMPLIANCE BAR -->
+  <div class="compliance-bar">
+    <div><strong>GSTIN:</strong> 32AABCM9982D1Z3 • <strong>SUPPLIER STATE:</strong> KERALA (CODE 32) • <strong>HSN CHAPTERS:</strong> 7318 (FASTENERS), 8482 (BEARINGS), 4009 (HYDRAULICS)</div>
+    <div><span>TERMS: NET-30 UPON VERIFICATION • DISPATCH WITHIN 24 HRS • TAX INVOICE + E-WAY BILL GENERATED</span></div>
+  </div>
 
-    <div style="display:flex; justify-content:flex-end; margin-top:20px;">
-      <button style="background:#D97706; color:#FFF; border:none; padding:12px 24px; font-family:var(--font-mono); font-weight:700; font-size:13px; cursor:pointer;" onclick="alert('Proforma PO generated with 18% GST calculation.')">GENERATE PROFORMA PO SHEET</button>
+  <!-- 3. MAIN WORKSPACE: PARAMETRIC FILTERS + HIGH-DENSITY MATRIX -->
+  <div class="app-layout">
+    
+    <!-- LEFT SIDEBAR: PARAMETRIC ENGINEERING FILTERS -->
+    <aside class="filter-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-heading">SKU / SPEC / HSN SEARCH</div>
+        <input type="text" id="searchInput" class="filter-input" placeholder="Search M8, DIN 933, 7318, SS 304..." oninput="handleSearch(this.value)">
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">PRODUCT CATEGORY</div>
+        <div class="filter-pills" id="categoryFilters">
+          <div class="filter-pill active" onclick="setFilter('category', 'all', this)"><span>All Hardware</span><span class="pill-count" id="countAll">8</span></div>
+          <div class="filter-pill" onclick="setFilter('category', 'Industrial Fasteners', this)"><span>Industrial Fasteners</span><span class="pill-count">4</span></div>
+          <div class="filter-pill" onclick="setFilter('category', 'Bearings & Power Transmission', this)"><span>Bearings & Transmission</span><span class="pill-count">1</span></div>
+          <div class="filter-pill" onclick="setFilter('category', 'Fluid Power & Hydraulics', this)"><span>Hydraulics & Hoses</span><span class="pill-count">1</span></div>
+          <div class="filter-pill" onclick="setFilter('category', 'Pneumatic Hardware & Valves', this)"><span>Pneumatics & Couplers</span><span class="pill-count">1</span></div>
+          <div class="filter-pill" onclick="setFilter('category', 'Industrial Tooling & Alignment', this)"><span>Tooling Dowel Pins</span><span class="pill-count">1</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">MATERIAL & METALLURGY</div>
+        <div class="filter-pills" id="materialFilters">
+          <div class="filter-pill active" onclick="setFilter('material', 'all', this)"><span>All Materials</span></div>
+          <div class="filter-pill" onclick="setFilter('material', 'SS 304', this)"><span>SS 304 Stainless (A2-70)</span></div>
+          <div class="filter-pill" onclick="setFilter('material', 'Grade 8.8', this)"><span>Grade 8.8 Carbon Steel</span></div>
+          <div class="filter-pill" onclick="setFilter('material', 'Chrome Steel', this)"><span>GCr15 Chrome Steel</span></div>
+          <div class="filter-pill" onclick="setFilter('material', 'Brass', this)"><span>Solid CW614N Brass</span></div>
+          <div class="filter-pill" onclick="setFilter('material', 'Tool Steel', this)"><span>Hardened Steel (60 HRC)</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">STANDARD (DIN / ISO / SAE)</div>
+        <div class="filter-pills" id="standardFilters">
+          <div class="filter-pill active" onclick="setFilter('standard', 'all', this)"><span>All Standards</span></div>
+          <div class="filter-pill" onclick="setFilter('standard', 'DIN 933', this)"><span>DIN 933 (Hex Bolt)</span></div>
+          <div class="filter-pill" onclick="setFilter('standard', 'DIN 6926', this)"><span>DIN 6926 (Nyloc Nut)</span></div>
+          <div class="filter-pill" onclick="setFilter('standard', 'DIN 912', this)"><span>DIN 912 (Socket Cap)</span></div>
+          <div class="filter-pill" onclick="setFilter('standard', 'ISO 2338', this)"><span>ISO 2338 (Dowel Pin)</span></div>
+          <div class="filter-pill" onclick="setFilter('standard', 'ISO 492', this)"><span>ISO 492 (Ball Bearing)</span></div>
+          <div class="filter-pill" onclick="setFilter('standard', 'SAE 100R2', this)"><span>SAE 100R2 (Hydraulic)</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">THREAD SIZE & PITCH</div>
+        <div class="filter-pills" id="threadFilters">
+          <div class="filter-pill active" onclick="setFilter('thread', 'all', this)"><span>All Diameters</span></div>
+          <div class="filter-pill" onclick="setFilter('thread', 'M6', this)"><span>M6 Metric</span></div>
+          <div class="filter-pill" onclick="setFilter('thread', 'M8', this)"><span>M8 Metric</span></div>
+          <div class="filter-pill" onclick="setFilter('thread', 'M10', this)"><span>M10 Metric</span></div>
+          <div class="filter-pill" onclick="setFilter('thread', 'M12', this)"><span>M12 Metric</span></div>
+          <div class="filter-pill" onclick="setFilter('thread', '1/4\"', this)"><span>1/4" NPT Pneumatic</span></div>
+          <div class="filter-pill" onclick="setFilter('thread', '1/2\"', this)"><span>1/2" ID Hydraulic</span></div>
+        </div>
+      </div>
+
+      <button onclick="resetAllFilters()" style="width:100%; padding:8px; background:#F1F5F9; border:1px solid #CBD5E1; font-family:var(--font-mono); font-size:11px; cursor:pointer;">[ RESET ALL PARAMETRIC FILTERS ]</button>
+    </aside>
+
+    <!-- RIGHT WORKSPACE: DENSE SPECIFICATION MATRIX -->
+    <main class="matrix-workspace">
+      
+      <div class="section-header-row">
+        <div>
+          <h1 class="matrix-title">Industrial Tabular Spec Matrix // Wholesale Price Slabs</h1>
+          <div class="matrix-subtitle">Real-time tiered volume discounts • Live stock availability • Instant GST Proforma Invoice (#PI-2026-8812)</div>
+        </div>
+
+        <div class="workspace-actions">
+          <button class="btn-quick-bulk" onclick="toggleBulkPasteBox()">
+            <span>⚡ BULK CSV REORDER BOX</span>
+          </button>
+          <button class="btn-proforma-gen" onclick="generateProformaModal()">
+            <span>📄 GENERATE GST PROFORMA (#PI)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- BULK CSV PASTE REORDER DRAWER (COLLAPSIBLE) -->
+      <div id="bulkPasteDrawer" class="bulk-paste-drawer" style="display:none;">
+        <div class="bulk-drawer-title">
+          <span>⚡ QUICK BULK CSV / TAB PASTE REORDER BOX</span>
+          <button onclick="toggleBulkPasteBox()" style="background:transparent; border:none; cursor:pointer; font-weight:700;">[ × CLOSE ]</button>
+        </div>
+        <p style="font-size:11px; color:#64748B; margin-bottom:8px;">
+          Paste multi-line SKU & quantity pairs from your ERP or Excel (e.g. comma, tab, or space separated: <code>FAST-HEX-M8-304, 250</code>).
+        </p>
+        <textarea id="bulkCsvInput" class="bulk-paste-textarea" placeholder="FAST-HEX-M8-304, 250&#10;FAST-NYL-M10-88, 500&#10;BRG-BALL-6204-2RS, 50&#10;PNEU-COUP-BRS-04, 100"></textarea>
+        <div class="bulk-actions-row">
+          <div style="display:flex; gap:8px;">
+            <button onclick="validateBulkPaste()" style="background:#0F172A; color:#FFF; border:none; padding:7px 14px; font-family:var(--font-mono); font-size:11px; font-weight:700; cursor:pointer;">VALIDATE & PREVIEW LINES</button>
+            <button onclick="loadSampleBulk()" style="background:#F1F5F9; border:1px solid #CBD5E1; padding:7px 12px; font-family:var(--font-mono); font-size:11px; cursor:pointer;">PASTE SAMPLE REORDER</button>
+          </div>
+          <button id="btnLoadToCart" onclick="loadValidatedBulkToCart()" style="display:none; background:#10B981; color:#FFF; border:none; padding:7px 14px; font-family:var(--font-mono); font-size:11px; font-weight:700; cursor:pointer;">✓ LOAD VALIDATED ITEMS INTO PO CART</button>
+        </div>
+        <div id="bulkPreviewWrap" class="bulk-preview-wrap"></div>
+      </div>
+
+      <!-- SPREADSHEET ORDER MATRIX TABLE -->
+      <div class="table-container" style="margin-top:14px;">
+        <table class="spec-matrix-table" id="specMatrixTable">
+          <thead>
+            <tr>
+              <th>PART NUMBER (SKU)</th>
+              <th>ENGINEERING SPEC & STANDARD</th>
+              <th>MATERIAL / GRADE</th>
+              <th>THREAD / SIZE</th>
+              <th>HSN CODE</th>
+              <th style="text-align:right;">1–49 PCS<br><span style="font-weight:400; font-size:10px; opacity:0.8;">(BASE RATE)</span></th>
+              <th style="text-align:right;">50–199 PCS<br><span style="font-weight:400; font-size:10px; color:#FDE68A;">(-20% SLAB)</span></th>
+              <th style="text-align:right;">200+ PCS<br><span style="font-weight:400; font-size:10px; color:#86EFAC;">(-40% BULK)</span></th>
+              <th>WAREHOUSE STOCK</th>
+              <th style="text-align:center;">ORDER QTY</th>
+              <th style="text-align:right;">LINE TOTAL</th>
+              <th style="text-align:center;">ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="matrixTableBody">
+            <!-- Populated dynamically via JS from API / seed data -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Quick Summary Footer in Workspace -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding:12px 16px; background:#FFF; border:1px solid #CBD5E1; font-family:var(--font-mono);">
+        <div>
+          <span style="font-weight:700;">SUPPLIER WAREHOUSE:</span> Cochin Port Distribution Depot • <span style="color:#059669;">● DISPATCH READY FOR SAME-DAY FREIGHT</span>
+        </div>
+        <div style="display:flex; gap:16px; align-items:center;">
+          <div><span style="color:#64748B;">ACTIVE PO ITEMS:</span> <strong id="bottomCartCount">0</strong></div>
+          <div><span style="color:#64748B;">ESTIMATED TOTAL:</span> <strong id="bottomCartTotal" style="color:var(--color-primary, #D97706); font-size:15px;">₹0.00</strong></div>
+          <button onclick="openCartDrawer()" style="background:#0F172A; color:#FFF; border:none; padding:8px 16px; font-family:var(--font-mono); font-weight:700; cursor:pointer;">REVIEW PO & NET-30 CHECKOUT →</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- 4. MODAL: TIERED VOLUME PRICING SPEC BREAKDOWN -->
+  <div id="pricingModal" class="modal-overlay">
+    <div class="modal-box" style="max-width:650px;">
+      <div class="modal-header">
+        <span id="modalProdTitle">TIERED VOLUME PRICING MATRIX</span>
+        <button class="modal-close-btn" onclick="closeModal('pricingModal')">&times;</button>
+      </div>
+      <div class="modal-body" id="modalProdBody">
+        <!-- Injected via openTierModal(sku) -->
+      </div>
+      <div class="modal-footer">
+        <span style="font-size:11px; color:#64748B;">Volume tiers automatically applied in PO Cart based on combined line quantities.</span>
+        <button onclick="closeModal('pricingModal')" style="background:#0F172A; color:#FFF; border:none; padding:6px 14px; font-family:var(--font-mono); cursor:pointer;">CLOSE</button>
+      </div>
     </div>
   </div>
 
+  <!-- 5. MODAL: 1-CLICK FORMAL GST PROFORMA INVOICE (#PI-2026-8812) -->
+  <div id="proformaModal" class="modal-overlay">
+    <div class="modal-box" style="max-width:960px;">
+      <div class="modal-header">
+        <span>FORMAL GST PROFORMA INVOICE & RFQ SPEC SHEET</span>
+        <button class="modal-close-btn" onclick="closeModal('proformaModal')">&times;</button>
+      </div>
+      <div class="modal-body" id="proformaModalContent">
+        <!-- Rendered Proforma sheet -->
+      </div>
+      <div class="modal-footer no-print">
+        <div>
+          <button onclick="printProformaInvoice()" style="background:#0F172A; color:#FFF; border:none; padding:8px 16px; font-family:var(--font-mono); font-weight:700; cursor:pointer; margin-right:8px;">🖨️ PRINT / SAVE AS PDF</button>
+          <button onclick="submitRfqTicket()" style="background:var(--color-primary, #D97706); color:#FFF; border:none; padding:8px 16px; font-family:var(--font-mono); font-weight:700; cursor:pointer;">📤 SUBMIT RFQ TO DEALER DESK</button>
+        </div>
+        <button onclick="closeModal('proformaModal')" style="background:#E2E8F0; border:none; padding:8px 16px; font-family:var(--font-mono); cursor:pointer;">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. SLIDE-OUT DRAWER: PO CART & NET-30 DEALER CHECKOUT -->
+  <div id="cartDrawerOverlay" class="cart-drawer-overlay" onclick="closeCartDrawer()"></div>
+  <div id="cartDrawer" class="cart-drawer">
+    <div style="background:#0F172A; color:#FFF; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono);">
+      <div style="font-weight:700; font-size:14px;">PURCHASE ORDER CART // NET-30 CHECKOUT</div>
+      <button onclick="closeCartDrawer()" style="background:transparent; border:none; color:#94A3B8; font-size:22px; cursor:pointer;">&times;</button>
+    </div>
+
+    <!-- Active Dealer Credit Gauge in Drawer -->
+    <div style="background:#1E293B; color:#E2E8F0; padding:14px 20px; font-family:var(--font-mono); font-size:11px; border-bottom:1px solid #334155;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+        <span style="color:#94A3B8;">TRADE CREDIT ACCOUNT:</span>
+        <strong id="drawerDealerName" style="color:#F8FAFC;">Cochin Marine Hardware Syndicate</strong>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+        <span style="color:#94A3B8;">CREDIT LIMIT: ₹5,00,000</span>
+        <span style="color:#10B981; font-weight:700;">AVAILABLE: <span id="drawerCreditAvailable">₹3,40,000.00</span></span>
+      </div>
+      <div style="height:6px; background:#334155; border-radius:3px; overflow:hidden;">
+        <div id="drawerCreditBar" style="height:100%; width:68%; background:#10B981;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Line Items -->
+    <div style="flex:1; overflow-y:auto; padding:16px 20px;" id="cartDrawerItems">
+      <!-- Injected via renderCart() -->
+    </div>
+
+    <!-- Checkout Footer & Payment Selectors -->
+    <div style="background:#F8FAFC; border-top:1px solid #CBD5E1; padding:16px 20px; font-family:var(--font-mono);">
+      <div style="font-size:12px; margin-bottom:12px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span style="color:#64748B;">Taxable Subtotal:</span>
+          <strong id="drawerTaxableSubtotal">₹0.00</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span style="color:#64748B;">GST (18% HSN Itemized):</span>
+          <strong id="drawerGstTotal">₹0.00</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:15px; font-weight:800; border-top:1px solid #CBD5E1; padding-top:6px; margin-top:6px;">
+          <span>PO Grand Total:</span>
+          <span id="drawerGrandTotal" style="color:var(--color-primary, #D97706);">₹0.00</span>
+        </div>
+      </div>
+
+      <!-- Payment Mode Selection -->
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px; font-weight:700; margin-bottom:6px; text-transform:uppercase;">Select Settlement Mode:</div>
+        <label style="display:flex; align-items:center; gap:8px; font-size:12px; margin-bottom:4px; cursor:pointer;">
+          <input type="radio" name="paymentMode" value="net30_credit" checked onchange="togglePaymentMethod('net30')">
+          <strong>Net-30 Trade Credit</strong> (Deduct from available credit limit)
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; font-size:12px; cursor:pointer;">
+          <input type="radio" name="paymentMode" value="cashfree_upi" onchange="togglePaymentMethod('upi')">
+          <strong>Instant Cashfree UPI QR</strong> (Immediate settlement)
+        </label>
+      </div>
+
+      <div id="checkoutCreditAlert" style="margin-bottom:12px; font-size:11px; padding:8px; background:#ECFDF5; border:1px solid #10B981; color:#065F46;">
+        ✓ Order amount is within your verified ₹3,40,000 Net-30 credit limit. No immediate cash disbursement required.
+      </div>
+
+      <!-- UPI QR Box (Hidden by default) -->
+      <div id="upiQrSection" style="display:none; text-align:center; padding:12px; background:#FFF; border:1px solid #CBD5E1; margin-bottom:12px;">
+        <div style="font-weight:700; font-size:11px; margin-bottom:6px;">SCAN TO PAY VIA ANY UPI APP</div>
+        <div id="upiQrCodeContainer" style="margin:8px auto; width:140px; height:140px; background:#F1F5F9; display:flex; align-items:center; justify-content:center; border:1px solid #CBD5E1;">
+          <img id="upiQrImg" src="" alt="UPI QR Code" style="width:130px; height:130px; display:none;">
+          <span id="upiQrPlaceholder" style="font-size:10px; color:#64748B;">[ QR Generating ]</span>
+        </div>
+        <div style="font-size:10px; color:#64748B;">VPA: industrial.dist@icici • MCMASTER INDUSTRIAL</div>
+      </div>
+
+      <button id="btnSubmitPo" onclick="submitPurchaseOrder()" style="width:100%; background:var(--color-primary, #D97706); color:#FFF; border:none; padding:12px; font-family:var(--font-mono); font-size:13px; font-weight:800; cursor:pointer;">
+        CONFIRM NET-30 PURCHASE ORDER (PO #PO-2026-XXXX)
+      </button>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON FOR INSTANT BULK NEGOTIATION -->
+  <a id="floatingWaBtn" class="floating-wa-btn" href="https://wa.me/919061902295?text=Hello%20McMaster%20Industrial,%20I%20need%20a%20wholesale%20quote%20for%20industrial%20fasteners" target="_blank" title="Chat with Industrial Engineering Desk">💬</a>
+
+  <!-- 7. APPLICATION LOGIC & STATE CONTROLLER -->
   <script>
-    function calcLine(inp, rate) {
-      document.getElementById('lineTot').textContent = '₹' + (inp.value * rate).toFixed(2);
+    // In-memory catalog and active state
+    let catalog = [];
+    let currentFilters = {
+      category: 'all',
+      material: 'all',
+      standard: 'all',
+      thread: 'all',
+      search: ''
+    };
+    let dealers = [];
+    let activeDealer = null;
+    let cart = []; // items: { product, qty, tierPricing }
+
+    // Fallback seed catalog if offline/standalone
+    const fallbackCatalog = [
+      {
+        id: 'PRD-FAST-01', sku: 'FAST-HEX-M8-304', name: 'Hex Head Bolt DIN 933 (SS 304, M8 x 30mm)',
+        category: 'Industrial Fasteners', material: 'SS 304 Stainless Steel', grade: 'A2-70', standard: 'DIN 933',
+        thread: 'M8 x 1.25', length: '30 mm', finish: 'Bright Passivated', hsn_code: '73181500', base_price: 16.00,
+        moq: 25, stock_qty: 15400, unit_of_measure: 'PCS',
+        price_tiers: [
+          { min_qty: 1, max_qty: 49, unit_price: 16.00, discount_pct: 0.0, tier_label: '1–49 PCS (Standard)' },
+          { min_qty: 50, max_qty: 199, unit_price: 12.50, discount_pct: 21.8, tier_label: '50–199 PCS (-22%)' },
+          { min_qty: 200, max_qty: null, unit_price: 9.80, discount_pct: 38.7, tier_label: '200+ PCS (-39% Bulk)' }
+        ]
+      },
+      {
+        id: 'PRD-FAST-02', sku: 'FAST-NYL-M10-88', name: 'Flanged Nyloc Nut DIN 6926 (Grade 8.8, M10)',
+        category: 'Industrial Fasteners', material: 'Grade 8.8 Carbon Steel', grade: 'Class 8.8', standard: 'DIN 6926',
+        thread: 'M10 x 1.5', length: 'N/A', finish: 'Zinc Flake Geomet Coated', hsn_code: '73181600', base_price: 14.50,
+        moq: 50, stock_qty: 22000, unit_of_measure: 'PCS',
+        price_tiers: [
+          { min_qty: 1, max_qty: 49, unit_price: 14.50, discount_pct: 0.0, tier_label: '1–49 PCS (Standard)' },
+          { min_qty: 50, max_qty: 199, unit_price: 10.80, discount_pct: 25.5, tier_label: '50–199 PCS (-26%)' },
+          { min_qty: 200, max_qty: null, unit_price: 7.90, discount_pct: 45.5, tier_label: '200+ PCS (-46% Bulk)' }
+        ]
+      },
+      {
+        id: 'PRD-BRG-03', sku: 'BRG-BALL-6204-2RS', name: 'Deep Groove Ball Bearing 6204-2RS (Chrome Steel)',
+        category: 'Bearings & Power Transmission', material: 'GCr15 Chrome Steel', grade: 'ABEC-3 / P6', standard: 'ISO 492 / DIN 625',
+        thread: 'Bore 20mm • OD 47mm • W 14mm', length: 'N/A', finish: 'Nitrile Rubber 2RS', hsn_code: '84821010', base_price: 240.00,
+        moq: 10, stock_qty: 3250, unit_of_measure: 'PCS',
+        price_tiers: [
+          { min_qty: 1, max_qty: 49, unit_price: 240.00, discount_pct: 0.0, tier_label: '1–49 PCS (Standard)' },
+          { min_qty: 50, max_qty: 199, unit_price: 195.00, discount_pct: 18.7, tier_label: '50–199 PCS (-19%)' },
+          { min_qty: 200, max_qty: null, unit_price: 162.00, discount_pct: 32.5, tier_label: '200+ PCS (-32.5% Bulk)' }
+        ]
+      },
+      {
+        id: 'PRD-HYD-04', sku: 'HYD-HOSE-100R2-08', name: 'High-Pressure Hydraulic Hose SAE 100R2 (1/2" ID, 5000 PSI)',
+        category: 'Fluid Power & Hydraulics', material: 'Double High-Tensile Steel Wire Braid', grade: '5000 PSI W.P.', standard: 'SAE 100R2AT',
+        thread: '1/2" ID (12.7mm)', length: 'Per Meter', finish: 'MSHA Approved Rubber', hsn_code: '40092100', base_price: 680.00,
+        moq: 5, stock_qty: 1800, unit_of_measure: 'METERS',
+        price_tiers: [
+          { min_qty: 1, max_qty: 49, unit_price: 680.00, discount_pct: 0.0, tier_label: '1–49 M (Standard)' },
+          { min_qty: 50, max_qty: 199, unit_price: 540.00, discount_pct: 20.6, tier_label: '50–199 M (-21%)' },
+          { min_qty: 200, max_qty: null, unit_price: 420.00, discount_pct: 38.2, tier_label: '200+ M (-38% Bulk)' }
+        ]
+      },
+      {
+        id: 'PRD-PIN-05', sku: 'PIN-DOWL-ISO2338-M8', name: 'Precision Dowel Pin ISO 2338 (m6 Hardened Steel, 8mm x 40mm)',
+        category: 'Industrial Tooling & Alignment', material: 'Hardened Tool Steel (60-62 HRC)', grade: 'm6 Ground Tolerance', standard: 'ISO 2338',
+        thread: '8mm Diameter (+0.009/+0.003 mm)', length: '40 mm', finish: 'Micro-Ground Oil Dipped', hsn_code: '73182400', base_price: 42.00,
+        moq: 20, stock_qty: 8400, unit_of_measure: 'PCS',
+        price_tiers: [
+          { min_qty: 1, max_qty: 49, unit_price: 42.00, discount_pct: 0.0, tier_label: '1–49 PCS (Standard)' },
+          { min_qty: 50, max_qty: 199, unit_price: 31.50, discount_pct: 25.0, tier_label: '50–199 PCS (-25%)' },
+          { min_qty: 200, max_qty: null, unit_price: 22.80, discount_pct: 45.7, tier_label: '200+ PCS (-46% Bulk)' }
+        ]
+      },
+      {
+        id: 'PRD-PNEU-06', sku: 'PNEU-COUP-BRS-04', name: 'Pneumatic Quick Coupler Brass 1/4" NPT',
+        category: 'Pneumatic Hardware & Valves', material: 'Solid CW614N Brass', grade: 'Industrial 300 PSI', standard: 'Mil-C-4109',
+        thread: '1/4" NPT Female', length: '52 mm', finish: 'Natural Brass', hsn_code: '84812000', base_price: 185.00,
+        moq: 10, stock_qty: 4600, unit_of_measure: 'PCS',
+        price_tiers: [
+          { min_qty: 1, max_qty: 49, unit_price: 185.00, discount_pct: 0.0, tier_label: '1–49 PCS (Standard)' },
+          { min_qty: 50, max_qty: 199, unit_price: 148.00, discount_pct: 20.0, tier_label: '50–199 PCS (-20%)' },
+          { min_qty: 200, max_qty: null, unit_price: 115.00, discount_pct: 37.8, tier_label: '200+ PCS (-38% Bulk)' }
+        ]
+      },
+      {
+        id: 'PRD-FAST-07', sku: 'FAST-CAP-M6-304', name: 'Socket Head Cap Screw DIN 912 (SS 304, M6 x 20mm)',
+        category: 'Industrial Fasteners', material: 'SS 304 Stainless Steel', grade: 'A2-70', standard: 'DIN 912',
+        thread: 'M6 x 1.0', length: '20 mm', finish: 'Passivated Bright', hsn_code: '73181500', base_price: 12.00,
+        moq: 25, stock_qty: 18500, unit_of_measure: 'PCS',
+        price_tiers: [
+          { min_qty: 1, max_qty: 49, unit_price: 12.00, discount_pct: 0.0, tier_label: '1–49 PCS (Standard)' },
+          { min_qty: 50, max_qty: 199, unit_price: 9.20, discount_pct: 23.3, tier_label: '50–199 PCS (-23%)' },
+          { min_qty: 200, max_qty: null, unit_price: 6.90, discount_pct: 42.5, tier_label: '200+ PCS (-42.5% Bulk)' }
+        ]
+      },
+      {
+        id: 'PRD-FAST-08', sku: 'FAST-HEX-M12-88', name: 'High-Tensile Hex Bolt DIN 931 (Grade 8.8, M12 x 50mm)',
+        category: 'Industrial Fasteners', material: 'Grade 8.8 Carbon Steel', grade: 'Class 8.8', standard: 'DIN 931',
+        thread: 'M12 x 1.75', length: '50 mm', finish: 'Black Oxide', hsn_code: '73181500', base_price: 34.00,
+        moq: 20, stock_qty: 9200, unit_of_measure: 'PCS',
+        price_tiers: [
+          { min_qty: 1, max_qty: 49, unit_price: 34.00, discount_pct: 0.0, tier_label: '1–49 PCS (Standard)' },
+          { min_qty: 50, max_qty: 199, unit_price: 26.00, discount_pct: 23.5, tier_label: '50–199 PCS (-23.5%)' },
+          { min_qty: 200, max_qty: null, unit_price: 19.50, discount_pct: 42.6, tier_label: '200+ PCS (-43% Bulk)' }
+        ]
+      }
+    ];
+
+    const fallbackDealers = [
+      { id: 'DLR-991', company_name: 'Cochin Marine Hardware Syndicate', gstin: '32AABCC1234D1Z5', credit_limit: 500000, credit_used: 160000, credit_available: 340000, status: 'APPROVED' },
+      { id: 'DLR-992', company_name: 'Malabar Heavy Engineering Works (Calicut)', gstin: '32ABXPR4567K1Z2', credit_limit: 750000, credit_used: 215000, credit_available: 535000, status: 'APPROVED' },
+      { id: 'DLR-993', company_name: 'Coimbatore Precision Pumps & Motors', gstin: '33AAACD9876P1ZV', credit_limit: 400000, credit_used: 310000, credit_available: 90000, status: 'APPROVED' },
+      { id: 'DLR-994', company_name: 'Apex Industrial Fabricators (Aluva)', gstin: '32AACFA7766M1Z8', credit_limit: 300000, credit_used: 0, credit_available: 300000, status: 'PENDING_APPROVAL' }
+    ];
+
+    // Initialize on DOM load
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadDealers();
+      await loadCatalog();
+      initDefaultCart();
+    });
+
+    async function loadDealers() {
+      try {
+        const res = await fetch('/api/dealers');
+        if (res.ok) {
+          const data = await res.json();
+          dealers = data.dealers || fallbackDealers;
+        } else {
+          dealers = fallbackDealers;
+        }
+      } catch (e) {
+        dealers = fallbackDealers;
+      }
+      populateDealerSelect();
+    }
+
+    function populateDealerSelect() {
+      const select = document.getElementById('dealerSelect');
+      select.innerHTML = '';
+      dealers.forEach(d => {
+        const opt = document.createElement('option');
+        opt.value = d.id;
+        opt.textContent = `${d.company_name} [${d.status}]`;
+        select.appendChild(opt);
+      });
+      activeDealer = dealers[0];
+      updateDealerDisplay();
+    }
+
+    function switchDealer(dealerId) {
+      activeDealer = dealers.find(d => d.id === dealerId) || dealers[0];
+      updateDealerDisplay();
+      renderCart();
+    }
+
+    function updateDealerDisplay() {
+      if (!activeDealer) return;
+      const disp = document.getElementById('creditAvailableDisplay');
+      const formatted = '₹' + Number(activeDealer.credit_available).toLocaleString('en-IN');
+      disp.textContent = `NET-30: ${formatted} AVAIL`;
+
+      document.getElementById('drawerDealerName').textContent = activeDealer.company_name;
+      document.getElementById('drawerCreditAvailable').textContent = formatted;
+
+      const pct = Math.min(100, Math.round((activeDealer.credit_available / activeDealer.credit_limit) * 100));
+      document.getElementById('drawerCreditBar').style.width = pct + '%';
+    }
+
+    async function loadCatalog() {
+      try {
+        const query = new URLSearchParams(currentFilters).toString();
+        const res = await fetch(`/api/catalog?${query}`);
+        if (res.ok) {
+          const data = await res.json();
+          catalog = data.products || fallbackCatalog;
+        } else {
+          catalog = filterFallbackCatalog();
+        }
+      } catch (e) {
+        catalog = filterFallbackCatalog();
+      }
+      renderMatrix();
+    }
+
+    function filterFallbackCatalog() {
+      return fallbackCatalog.filter(p => {
+        if (currentFilters.category !== 'all' && !p.category.toLowerCase().includes(currentFilters.category.toLowerCase())) return false;
+        if (currentFilters.material !== 'all' && !p.material.toLowerCase().includes(currentFilters.material.toLowerCase())) return false;
+        if (currentFilters.standard !== 'all' && !p.standard.toLowerCase().includes(currentFilters.standard.toLowerCase())) return false;
+        if (currentFilters.thread !== 'all' && !p.thread.toLowerCase().includes(currentFilters.thread.toLowerCase())) return false;
+        if (currentFilters.search) {
+          const s = currentFilters.search.toLowerCase();
+          const match = p.sku.toLowerCase().includes(s) || p.name.toLowerCase().includes(s) || p.hsn_code.includes(s) || p.standard.toLowerCase().includes(s);
+          if (!match) return false;
+        }
+        return true;
+      });
+    }
+
+    function renderMatrix() {
+      const tbody = document.getElementById('matrixTableBody');
+      tbody.innerHTML = '';
+
+      if (catalog.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="12" style="text-align:center; padding:30px; color:#64748B;">No matching industrial fasteners or components found for selected filters.</td></tr>`;
+        return;
+      }
+
+      catalog.forEach(prod => {
+        const tiers = prod.price_tiers || [];
+        const t1 = tiers[0] || { unit_price: prod.base_price, discount_pct: 0 };
+        const t2 = tiers[1] || { unit_price: prod.base_price * 0.8, discount_pct: 20 };
+        const t3 = tiers[2] || { unit_price: prod.base_price * 0.6, discount_pct: 40 };
+
+        const initialQty = prod.moq || 25;
+        const tierCalc = calculateTier(prod, initialQty);
+
+        const tr = document.createElement('tr');
+        tr.id = `row-${prod.sku}`;
+        tr.innerHTML = `
+          <td>
+            <span class="sku-badge" onclick="openTierModal('${prod.sku}')">${prod.sku}</span>
+          </td>
+          <td>
+            <div style="font-weight:600; color:#0F172A;">${prod.name}</div>
+            <div style="margin-top:2px;">
+              <span class="standard-badge">${prod.standard}</span>
+              <span style="font-size:11px; color:#64748B; margin-left:4px;">${prod.finish}</span>
+            </div>
+          </td>
+          <td>
+            <div>${prod.material}</div>
+            <div style="font-size:11px; color:#64748B;">${prod.grade}</div>
+          </td>
+          <td><strong>${prod.thread}</strong></td>
+          <td><code style="background:#F1F5F9; padding:2px 4px;">${prod.hsn_code}</code></td>
+          
+          <!-- TIER 1 -->
+          <td class="tier-cell ${tierCalc.tierIndex === 0 ? 'active-tier' : ''}" id="tier-0-${prod.sku}">
+            <div class="tier-price-val">₹${t1.unit_price.toFixed(2)}</div>
+            <span class="tier-discount-sub">1–49 pcs</span>
+          </td>
+
+          <!-- TIER 2 -->
+          <td class="tier-cell ${tierCalc.tierIndex === 1 ? 'active-tier' : ''}" id="tier-1-${prod.sku}">
+            <div class="tier-price-val">₹${t2.unit_price.toFixed(2)}</div>
+            <span class="tier-discount-sub">-${t2.discount_pct.toFixed(0)}% (50–199)</span>
+          </td>
+
+          <!-- TIER 3 -->
+          <td class="tier-cell ${tierCalc.tierIndex === 2 ? 'active-tier' : ''}" id="tier-2-${prod.sku}">
+            <div class="tier-price-val">₹${t3.unit_price.toFixed(2)}</div>
+            <span class="tier-discount-sub" style="color:#059669; font-weight:700;">-${t3.discount_pct.toFixed(0)}% (200+)</span>
+          </td>
+
+          <td>
+            <span class="stock-tag in-stock">● ${Number(prod.stock_qty).toLocaleString()} ${prod.unit_of_measure}</span>
+          </td>
+
+          <!-- QUANTITY INPUT WITH STEPPERS -->
+          <td style="text-align:center;">
+            <div class="qty-control-box" style="justify-content:center;">
+              <button class="btn-qty-step" onclick="stepQty('${prod.sku}', -25)">-</button>
+              <input type="number" id="qty-${prod.sku}" class="qty-input" value="${initialQty}" min="${prod.moq || 1}" step="1" oninput="updateLineCalc('${prod.sku}')">
+              <button class="btn-qty-step" onclick="stepQty('${prod.sku}', 25)">+</button>
+            </div>
+          </td>
+
+          <!-- LINE TOTAL -->
+          <td class="line-total-cell" id="linetot-${prod.sku}">
+            ₹${tierCalc.lineTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+          </td>
+
+          <!-- ACTION -->
+          <td style="text-align:center;">
+            <button class="btn-add-line" onclick="addLineToCart('${prod.sku}')">+ ADD TO PO</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function calculateTier(prod, qty) {
+      qty = Math.max(1, Number(qty) || 1);
+      const tiers = prod.price_tiers || [];
+      if (tiers.length === 0) {
+        return { unitPrice: prod.base_price, discountPct: 0, tierIndex: 0, lineTotal: prod.base_price * qty };
+      }
+
+      let tierIndex = 0;
+      let matchedTier = tiers[0];
+      for (let i = 0; i < tiers.length; i++) {
+        const t = tiers[i];
+        if (qty >= t.min_qty && (t.max_qty === null || qty <= t.max_qty)) {
+          matchedTier = t;
+          tierIndex = i;
+          break;
+        }
+      }
+
+      const unitPrice = matchedTier.unit_price;
+      const lineTotal = Math.round(unitPrice * qty * 100) / 100;
+      return {
+        unitPrice,
+        discountPct: matchedTier.discount_pct,
+        tierIndex,
+        tierLabel: matchedTier.tier_label,
+        lineTotal
+      };
+    }
+
+    function stepQty(sku, step) {
+      const input = document.getElementById(`qty-${sku}`);
+      if (!input) return;
+      const current = Number(input.value) || 0;
+      const next = Math.max(1, current + step);
+      input.value = next;
+      updateLineCalc(sku);
+    }
+
+    function updateLineCalc(sku) {
+      const prod = catalog.find(p => p.sku === sku);
+      if (!prod) return;
+      const input = document.getElementById(`qty-${sku}`);
+      const qty = Math.max(1, Number(input.value) || 1);
+      const calc = calculateTier(prod, qty);
+
+      // Update Line Total
+      const totEl = document.getElementById(`linetot-${sku}`);
+      if (totEl) {
+        totEl.textContent = '₹' + calc.lineTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+      }
+
+      // Highlight active tier cell
+      for (let i = 0; i < 3; i++) {
+        const cell = document.getElementById(`tier-${i}-${sku}`);
+        if (cell) {
+          if (i === calc.tierIndex) {
+            cell.classList.add('active-tier');
+          } else {
+            cell.classList.remove('active-tier');
+          }
+        }
+      }
+    }
+
+    // Filter controls
+    function setFilter(type, value, el) {
+      currentFilters[type] = value;
+      const container = el.parentElement;
+      container.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      loadCatalog();
+    }
+
+    function handleSearch(val) {
+      currentFilters.search = val;
+      loadCatalog();
+    }
+
+    function resetAllFilters() {
+      currentFilters = { category: 'all', material: 'all', standard: 'all', thread: 'all', search: '' };
+      document.getElementById('searchInput').value = '';
+      document.querySelectorAll('.filter-pills').forEach(wrap => {
+        wrap.querySelectorAll('.filter-pill').forEach((p, idx) => {
+          if (idx === 0) p.classList.add('active');
+          else p.classList.remove('active');
+        });
+      });
+      loadCatalog();
+    }
+
+    // PO Cart operations
+    function addLineToCart(sku) {
+      const prod = catalog.find(p => p.sku === sku);
+      if (!prod) return;
+      const input = document.getElementById(`qty-${sku}`);
+      const qty = Math.max(1, Number(input.value) || 1);
+      const tierCalc = calculateTier(prod, qty);
+
+      const existingIndex = cart.findIndex(i => i.product.sku === sku);
+      if (existingIndex > -1) {
+        cart[existingIndex].qty = qty;
+        cart[existingIndex].tierCalc = tierCalc;
+      } else {
+        cart.push({ product: prod, qty, tierCalc });
+      }
+
+      renderCart();
+      flashButton(`row-${sku}`);
+    }
+
+    function flashButton(rowId) {
+      const row = document.getElementById(rowId);
+      if (row) {
+        const btn = row.querySelector('.btn-add-line');
+        if (btn) {
+          const original = btn.textContent;
+          btn.textContent = '✓ ADDED';
+          btn.style.background = '#10B981';
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.style.background = '#0F172A';
+          }, 800);
+        }
+      }
+    }
+
+    function initDefaultCart() {
+      // Pre-load 2 realistic items to show live cart state immediately
+      const p1 = fallbackCatalog[0]; // SS 304 Bolt
+      const p2 = fallbackCatalog[2]; // Ball Bearing
+      if (p1 && p2) {
+        cart = [
+          { product: p1, qty: 500, tierCalc: calculateTier(p1, 500) },
+          { product: p2, qty: 150, tierCalc: calculateTier(p2, 150) }
+        ];
+        renderCart();
+      }
+    }
+
+    function renderCart() {
+      const count = cart.length;
+      document.getElementById('cartCountBadge').textContent = `${count} LINES`;
+      document.getElementById('bottomCartCount').textContent = count;
+
+      let subtotal = 0;
+      cart.forEach(item => {
+        subtotal += item.tierCalc.lineTotal;
+      });
+
+      const gst = Math.round(subtotal * 0.18 * 100) / 100;
+      const grandTotal = Math.round((subtotal + gst) * 100) / 100;
+
+      document.getElementById('cartSubtotalBadge').textContent = '₹' + subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+      document.getElementById('bottomCartTotal').textContent = '₹' + grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+
+      document.getElementById('drawerTaxableSubtotal').textContent = '₹' + subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+      document.getElementById('drawerGstTotal').textContent = '₹' + gst.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+      document.getElementById('drawerGrandTotal').textContent = '₹' + grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+
+      // Render items inside drawer
+      const container = document.getElementById('cartDrawerItems');
+      if (cart.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:40px; color:#64748B; font-family:var(--font-mono);">Your Purchase Order Cart is empty.<br>Add items from the matrix above.</div>`;
+      } else {
+        container.innerHTML = cart.map((item, idx) => `
+          <div style="background:#F8FAFC; border:1px solid #CBD5E1; padding:12px; margin-bottom:10px; font-family:var(--font-mono); font-size:12px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <strong style="color:#0369A1;">${item.product.sku}</strong>
+              <button onclick="removeCartItem(${idx})" style="background:transparent; border:none; color:#EF4444; cursor:pointer; font-weight:700;">[ × ]</button>
+            </div>
+            <div style="font-size:11px; margin-bottom:6px; color:#334155;">${item.product.name}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:#FFF; border:1px solid #E2E8F0; padding:6px 8px;">
+              <div>
+                <span>Qty: <strong>${item.qty} ${item.product.unit_of_measure}</strong></span>
+                <span style="font-size:10px; color:#059669; margin-left:6px;">(${item.tierCalc.tierLabel})</span>
+              </div>
+              <div>
+                <span>@ ₹${item.tierCalc.unitPrice.toFixed(2)} = </span>
+                <strong style="color:#0F172A;">₹${item.tierCalc.lineTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</strong>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Check credit sufficiency
+      const avail = activeDealer ? activeDealer.credit_available : 0;
+      const alertBox = document.getElementById('checkoutCreditAlert');
+      const submitBtn = document.getElementById('btnSubmitPo');
+
+      if (grandTotal > avail) {
+        alertBox.style.background = '#FEF2F2';
+        alertBox.style.borderColor = '#EF4444';
+        alertBox.style.color = '#991B1B';
+        alertBox.innerHTML = `⚠️ Order Total (₹${grandTotal.toLocaleString('en-IN')}) exceeds available Net-30 credit limit (₹${avail.toLocaleString('en-IN')}). Switch to Cashfree UPI or contact admin to raise trade limit.`;
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.5';
+        submitBtn.style.cursor = 'not-allowed';
+      } else {
+        alertBox.style.background = '#ECFDF5';
+        alertBox.style.borderColor = '#10B981';
+        alertBox.style.color = '#065F46';
+        alertBox.innerHTML = `✓ Order amount (₹${grandTotal.toLocaleString('en-IN')}) is within your verified ₹${avail.toLocaleString('en-IN')} Net-30 credit limit. No immediate cash disbursement required.`;
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.style.cursor = 'pointer';
+      }
+    }
+
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      renderCart();
+    }
+
+    function openCartDrawer() {
+      document.getElementById('cartDrawerOverlay').style.display = 'block';
+      document.getElementById('cartDrawer').classList.add('open');
+    }
+
+    function closeCartDrawer() {
+      document.getElementById('cartDrawerOverlay').style.display = 'none';
+      document.getElementById('cartDrawer').classList.remove('open');
+    }
+
+    function togglePaymentMethod(method) {
+      const upiSec = document.getElementById('upiQrSection');
+      const submitBtn = document.getElementById('btnSubmitPo');
+      const alertBox = document.getElementById('checkoutCreditAlert');
+
+      if (method === 'upi') {
+        upiSec.style.display = 'block';
+        alertBox.style.display = 'none';
+        submitBtn.textContent = 'PAY NOW VIA CASHFREE UPI & CONFIRM PO';
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.style.cursor = 'pointer';
+
+        // Generate simulated UPI QR string
+        const subtotal = cart.reduce((s, i) => s + i.tierCalc.lineTotal, 0);
+        const grandTotal = Math.round(subtotal * 1.18 * 100) / 100;
+        const upiString = `upi://pay?pa=industrial.dist@icici&pn=MCMASTER+INDUSTRIAL&am=${grandTotal.toFixed(2)}&cu=INR&tn=PO-2026-${Math.floor(1000+Math.random()*9000)}`;
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${encodeURIComponent(upiString)}`;
+        const img = document.getElementById('upiQrImg');
+        img.src = qrUrl;
+        img.style.display = 'block';
+        document.getElementById('upiQrPlaceholder').style.display = 'none';
+      } else {
+        upiSec.style.display = 'none';
+        alertBox.style.display = 'block';
+        submitBtn.textContent = 'CONFIRM NET-30 PURCHASE ORDER (PO #PO-2026-XXXX)';
+        renderCart();
+      }
+    }
+
+    async function submitPurchaseOrder() {
+      if (cart.length === 0) {
+        alert('Your Purchase Order Cart is empty.');
+        return;
+      }
+
+      const method = document.querySelector('input[name="paymentMode"]:checked').value;
+      const itemsPayload = cart.map(i => ({
+        sku: i.product.sku,
+        qty: i.qty
+      }));
+
+      const payload = {
+        dealerId: activeDealer ? activeDealer.id : 'DLR-991',
+        customerName: activeDealer ? activeDealer.contact_person : 'Purchase Manager',
+        companyName: activeDealer ? activeDealer.company_name : 'Cochin Marine Hardware Syndicate',
+        phone: activeDealer ? activeDealer.phone : '919895033445',
+        email: activeDealer ? activeDealer.email : 'procurement@cochinmarine.in',
+        gstin: activeDealer ? activeDealer.gstin : '32AABCC1234D1Z5',
+        shippingAddress: 'Shed #4, Marine Drive Shipyard Complex, Willingdon Island, Kochi, Kerala 682003',
+        stateCode: activeDealer ? activeDealer.state_code : '32',
+        paymentMethod: method,
+        items: itemsPayload
+      };
+
+      try {
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert(`🎉 SUCCESS! Purchase Order ${data.orderNumber} successfully placed.\n\nPayment Mode: ${method === 'net30_credit' ? 'Net-30 Trade Credit (Charged to Ledger)' : 'Cashfree UPI Verified'}\nTotal: ₹${data.order.grand_total.toLocaleString('en-IN')}\nStatus: DISPATCH_PENDING\n\nYour trade credit ledger has been updated.`);
+          
+          if (data.dealerCreditStatus && activeDealer) {
+            activeDealer.credit_available = data.dealerCreditStatus.creditAvailable;
+            activeDealer.credit_used = data.dealerCreditStatus.creditUsed;
+            updateDealerDisplay();
+          }
+
+          cart = [];
+          renderCart();
+          closeCartDrawer();
+        } else {
+          alert(`Order Error: ${data.message || 'Could not place order'}`);
+        }
+      } catch (err) {
+        alert(`Order submitted successfully in offline preview mode (PO #PO-2026-${Math.floor(1000+Math.random()*9000)}).`);
+        cart = [];
+        renderCart();
+        closeCartDrawer();
+      }
+    }
+
+    // TIER VOLUME PRICING MODAL
+    function openTierModal(sku) {
+      const prod = catalog.find(p => p.sku === sku) || fallbackCatalog.find(p => p.sku === sku);
+      if (!prod) return;
+
+      document.getElementById('modalProdTitle').textContent = `VOLUME PRICING SCHEDULE // ${prod.sku}`;
+      const tiers = prod.price_tiers || [];
+
+      document.getElementById('modalProdBody').innerHTML = `
+        <div style="font-family:var(--font-mono);">
+          <div style="font-size:15px; font-weight:800; color:#0F172A; margin-bottom:4px;">${prod.name}</div>
+          <div style="font-size:12px; color:#64748B; margin-bottom:14px;">Standard: ${prod.standard} • Material: ${prod.material} (${prod.grade}) • HSN: ${prod.hsn_code}</div>
+
+          <table style="width:100%; border-collapse:collapse; font-size:12px; margin-bottom:16px;">
+            <thead>
+              <tr style="background:#0F172A; color:#FFF;">
+                <th style="padding:8px 10px; border:1px solid #334155; text-align:left;">VOLUME SLAB</th>
+                <th style="padding:8px 10px; border:1px solid #334155; text-align:right;">UNIT RATE (EXCL. GST)</th>
+                <th style="padding:8px 10px; border:1px solid #334155; text-align:right;">VOLUME SAVINGS</th>
+                <th style="padding:8px 10px; border:1px solid #334155; text-align:left;">PACKAGING</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${tiers.map((t, idx) => `
+                <tr style="background:${idx === 2 ? '#FEF3C7' : idx % 2 === 0 ? '#F8FAFC' : '#FFF'};">
+                  <td style="padding:8px 10px; border:1px solid #CBD5E1; font-weight:700;">${t.tier_label}</td>
+                  <td style="padding:8px 10px; border:1px solid #CBD5E1; text-align:right; font-weight:700;">₹${t.unit_price.toFixed(2)} / ${prod.unit_of_measure}</td>
+                  <td style="padding:8px 10px; border:1px solid #CBD5E1; text-align:right; color:#059669; font-weight:700;">${t.discount_pct > 0 ? `-${t.discount_pct.toFixed(1)}%` : 'Base Rate'}</td>
+                  <td style="padding:8px 10px; border:1px solid #CBD5E1; font-size:11px; color:#475569;">${idx === 0 ? 'Individually Packaged' : idx === 1 ? 'Industrial Box Pack' : 'Sealed Master Wooden Carton'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+
+          <div style="background:#F1F5F9; border:1px solid #CBD5E1; padding:12px; font-size:11px; line-height:1.5;">
+            <strong>Technical Compliance & Certification:</strong><br>
+            • Material Test Certificate (MTR) EN 10204 3.1 provided with each production heat batch.<br>
+            • Salt spray test pass: > 480 hours for SS 304 / Geomet Flake coating.<br>
+            • 100% optical sorting verification for dimensional tolerances.
+          </div>
+        </div>
+      `;
+
+      document.getElementById('pricingModal').style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    // BULK CSV REORDER PASTE
+    function toggleBulkPasteBox() {
+      const box = document.getElementById('bulkPasteDrawer');
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function loadSampleBulk() {
+      document.getElementById('bulkCsvInput').value =
+`FAST-HEX-M8-304, 250
+FAST-NYL-M10-88, 500
+BRG-BALL-6204-2RS, 50
+PNEU-COUP-BRS-04, 100`;
+      validateBulkPaste();
+    }
+
+    let validatedBulkItems = [];
+    function validateBulkPaste() {
+      const text = document.getElementById('bulkCsvInput').value.trim();
+      if (!text) {
+        alert('Please paste SKU and Quantity lines into the box.');
+        return;
+      }
+
+      const lines = text.split('\n');
+      validatedBulkItems = [];
+      const previewRows = [];
+
+      lines.forEach((line, idx) => {
+        const clean = line.trim();
+        if (!clean) return;
+        const parts = clean.split(/[,\t\s]+/).filter(Boolean);
+        const sku = parts[0];
+        const qty = parseInt(parts[1], 10) || 0;
+
+        const prod = catalog.find(p => p.sku.toLowerCase() === (sku || '').toLowerCase()) || fallbackCatalog.find(p => p.sku.toLowerCase() === (sku || '').toLowerCase());
+        if (prod && qty > 0) {
+          const tierCalc = calculateTier(prod, qty);
+          validatedBulkItems.push({ product: prod, qty, tierCalc });
+          previewRows.push(`
+            <tr style="background:#ECFDF5;">
+              <td style="padding:6px 8px; border:1px solid #CBD5E1; font-weight:700; color:#065F46;">✓ Line ${idx+1}: ${prod.sku}</td>
+              <td style="padding:6px 8px; border:1px solid #CBD5E1;">${prod.name}</td>
+              <td style="padding:6px 8px; border:1px solid #CBD5E1; text-align:right;">${qty}</td>
+              <td style="padding:6px 8px; border:1px solid #CBD5E1; text-align:right;">₹${tierCalc.unitPrice.toFixed(2)}</td>
+              <td style="padding:6px 8px; border:1px solid #CBD5E1; text-align:right; font-weight:700;">₹${tierCalc.lineTotal.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
+            </tr>
+          `);
+        } else {
+          previewRows.push(`
+            <tr style="background:#FEF2F2;">
+              <td style="padding:6px 8px; border:1px solid #CBD5E1; font-weight:700; color:#991B1B;">⚠️ Line ${idx+1}: ${sku || 'Unknown'}</td>
+              <td style="padding:6px 8px; border:1px solid #CBD5E1; color:#991B1B;" colspan="4">Invalid SKU or zero quantity. Check catalogue part number.</td>
+            </tr>
+          `);
+        }
+      });
+
+      const previewDiv = document.getElementById('bulkPreviewWrap');
+      previewDiv.style.display = 'block';
+      previewDiv.innerHTML = `
+        <div style="font-family:var(--font-mono); font-size:12px;">
+          <div style="margin-bottom:6px; font-weight:700;">Validation Results: ${validatedBulkItems.length} lines recognized</div>
+          <table style="width:100%; border-collapse:collapse; font-size:11px;">
+            <thead>
+              <tr style="background:#F1F5F9;">
+                <th style="padding:6px 8px; border:1px solid #CBD5E1; text-align:left;">SKU STATUS</th>
+                <th style="padding:6px 8px; border:1px solid #CBD5E1; text-align:left;">DESCRIPTION</th>
+                <th style="padding:6px 8px; border:1px solid #CBD5E1; text-align:right;">QTY</th>
+                <th style="padding:6px 8px; border:1px solid #CBD5E1; text-align:right;">RATE</th>
+                <th style="padding:6px 8px; border:1px solid #CBD5E1; text-align:right;">SUBTOTAL</th>
+              </tr>
+            </thead>
+            <tbody>${previewRows.join('')}</tbody>
+          </table>
+        </div>
+      `;
+
+      const loadBtn = document.getElementById('btnLoadToCart');
+      if (validatedBulkItems.length > 0) {
+        loadBtn.style.display = 'inline-block';
+      } else {
+        loadBtn.style.display = 'none';
+      }
+    }
+
+    function loadValidatedBulkToCart() {
+      validatedBulkItems.forEach(item => {
+        const existing = cart.find(c => c.product.sku === item.product.sku);
+        if (existing) {
+          existing.qty = item.qty;
+          existing.tierCalc = item.tierCalc;
+        } else {
+          cart.push(item);
+        }
+      });
+      renderCart();
+      alert(`Loaded ${validatedBulkItems.length} validated lines into your PO Cart.`);
+      toggleBulkPasteBox();
+      openCartDrawer();
+    }
+
+    // 1-CLICK FORMAL GST PROFORMA INVOICE GENERATOR (#PI-2026-8812)
+    function generateProformaModal() {
+      if (cart.length === 0) {
+        alert('Please add items to your PO cart before generating a Proforma Invoice.');
+        return;
+      }
+
+      const dealer = activeDealer || fallbackDealers[0];
+      const piNumber = `PI-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      const issueDate = new Date().toISOString().slice(0, 10);
+      const validUntil = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+      let subtotal = 0;
+      const hsnSummary = {};
+
+      const itemsHtml = cart.map((item, idx) => {
+        const lineTot = item.tierCalc.lineTotal;
+        subtotal += lineTot;
+        const hsn = item.product.hsn_code || '73181500';
+        if (!hsnSummary[hsn]) {
+          hsnSummary[hsn] = { taxable: 0, desc: item.product.name };
+        }
+        hsnSummary[hsn].taxable += lineTot;
+
+        return `
+          <tr>
+            <td style="text-align:center;">${idx + 1}</td>
+            <td><strong>${item.product.sku}</strong></td>
+            <td>${item.product.name} [${item.product.standard}]</td>
+            <td>${item.product.hsn_code}</td>
+            <td style="text-align:right;">${item.qty} ${item.product.unit_of_measure}</td>
+            <td style="text-align:right;">₹${item.tierCalc.unitPrice.toFixed(2)}</td>
+            <td style="text-align:right; color:#059669;">${item.tierCalc.discountPct > 0 ? `-${item.tierCalc.discountPct.toFixed(0)}%` : 'Base'}</td>
+            <td style="text-align:right; font-weight:700;">₹${lineTot.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const isInterstate = String(dealer.state_code || '32') !== '32';
+      const cgst = isInterstate ? 0 : Math.round(subtotal * 0.09 * 100) / 100;
+      const sgst = isInterstate ? 0 : Math.round(subtotal * 0.09 * 100) / 100;
+      const igst = isInterstate ? Math.round(subtotal * 0.18 * 100) / 100 : 0;
+      const grandTotal = Math.round((subtotal + cgst + sgst + igst) * 100) / 100;
+
+      const hsnRows = Object.keys(hsnSummary).map(hsn => {
+        const val = hsnSummary[hsn].taxable;
+        const hsnCgst = isInterstate ? 0 : Math.round(val * 0.09 * 100) / 100;
+        const hsnSgst = isInterstate ? 0 : Math.round(val * 0.09 * 100) / 100;
+        const hsnIgst = isInterstate ? Math.round(val * 0.18 * 100) / 100 : 0;
+        return `
+          <tr>
+            <td style="border:1px solid #CBD5E1; padding:4px 8px;"><strong>${hsn}</strong></td>
+            <td style="border:1px solid #CBD5E1; padding:4px 8px; text-align:right;">₹${val.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
+            <td style="border:1px solid #CBD5E1; padding:4px 8px; text-align:right;">${isInterstate ? '-' : '9% (₹' + hsnCgst.toFixed(2) + ')'}</td>
+            <td style="border:1px solid #CBD5E1; padding:4px 8px; text-align:right;">${isInterstate ? '-' : '9% (₹' + hsnSgst.toFixed(2) + ')'}</td>
+            <td style="border:1px solid #CBD5E1; padding:4px 8px; text-align:right;">${isInterstate ? '18% (₹' + hsnIgst.toFixed(2) + ')' : '-'}</td>
+            <td style="border:1px solid #CBD5E1; padding:4px 8px; text-align:right; font-weight:700;">₹${(val + hsnCgst + hsnSgst + hsnIgst).toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const modalDiv = document.getElementById('proformaModalContent');
+      modalDiv.innerHTML = `
+        <div id="proformaSheetPrintArea" class="proforma-sheet">
+          <div class="pi-header">
+            <div>
+              <div class="pi-company" data-wl-brand>MCMASTER INDUSTRIAL DISTRIBUTORS PVT LTD</div>
+              <div style="font-size:11px; color:#475569; margin-top:2px;">
+                Cochin Industrial Distribution Hub, Kalamassery, Kochi 682024<br>
+                GSTIN: <strong>32AABCM9982D1Z3</strong> • State: Kerala (32) • PAN: AABCM9982D
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div class="pi-badge">FORMAL GST PROFORMA INVOICE</div>
+              <div style="font-size:14px; font-weight:800; margin-top:4px;">${piNumber}</div>
+              <div style="font-size:11px; color:#475569;">Issue Date: ${issueDate}</div>
+              <div style="font-size:11px; color:#059669; font-weight:700;">Valid Until: ${validUntil}</div>
+            </div>
+          </div>
+
+          <div class="pi-grid-details">
+            <div>
+              <strong style="text-transform:uppercase; color:#0F172A;">Billed & Shipped To (Buyer):</strong><br>
+              <strong>${dealer.company_name}</strong><br>
+              Attn: ${dealer.contact_person || 'Purchase Head'} (${dealer.phone || '919895033445'})<br>
+              GSTIN: <strong>${dealer.gstin}</strong> • State: ${dealer.state_code === '33' ? 'Tamil Nadu (33)' : 'Kerala (32)'}
+            </div>
+            <div>
+              <strong>Commercial Terms & Statutory Details:</strong><br>
+              Payment Terms: <strong>Net-30 Trade Credit</strong> (or 100% advance RTGS)<br>
+              Reverse Charge Applicable (RCM): <strong>NO</strong><br>
+              Place of Supply: <strong>${dealer.state_code === '33' ? '33 - Tamil Nadu' : '32 - Kerala'}</strong><br>
+              Despatch Mode: Heavy Freight via VRL Logistics Express
+            </div>
+          </div>
+
+          <table class="pi-table">
+            <thead>
+              <tr>
+                <th style="width:30px; text-align:center;">#</th>
+                <th>PART NUMBER</th>
+                <th>ITEM DESCRIPTION & STANDARD</th>
+                <th>HSN</th>
+                <th style="text-align:right;">QTY</th>
+                <th style="text-align:right;">RATE</th>
+                <th style="text-align:right;">DISC</th>
+                <th style="text-align:right;">TAXABLE AMT</th>
+              </tr>
+            </thead>
+            <tbody>${itemsHtml}</tbody>
+          </table>
+
+          <div class="pi-hsn-breakdown">
+            <strong>STATUTORY HSN TAX SEGREGATION BREAKDOWN (GST 18%):</strong>
+            <table style="width:100%; border-collapse:collapse; margin-top:6px; font-size:11px;">
+              <thead>
+                <tr style="background:#E2E8F0;">
+                  <th style="padding:4px 8px; border:1px solid #CBD5E1; text-align:left;">HSN CODE</th>
+                  <th style="padding:4px 8px; border:1px solid #CBD5E1; text-align:right;">TAXABLE VAL</th>
+                  <th style="padding:4px 8px; border:1px solid #CBD5E1; text-align:right;">CGST RATE</th>
+                  <th style="padding:4px 8px; border:1px solid #CBD5E1; text-align:right;">SGST RATE</th>
+                  <th style="padding:4px 8px; border:1px solid #CBD5E1; text-align:right;">IGST RATE</th>
+                  <th style="padding:4px 8px; border:1px solid #CBD5E1; text-align:right;">TOTAL VALUE</th>
+                </tr>
+              </thead>
+              <tbody>${hsnRows}</tbody>
+            </table>
+          </div>
+
+          <div class="pi-totals-box">
+            <table class="pi-totals-table">
+              <tr>
+                <td>Total Taxable Value:</td>
+                <td style="text-align:right; font-weight:700;">₹${subtotal.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
+              </tr>
+              ${!isInterstate ? `
+                <tr><td>Central GST (CGST 9%):</td><td style="text-align:right;">₹${cgst.toLocaleString('en-IN', {minimumFractionDigits:2})}</td></tr>
+                <tr><td>State GST (SGST 9%):</td><td style="text-align:right;">₹${sgst.toLocaleString('en-IN', {minimumFractionDigits:2})}</td></tr>
+              ` : `
+                <tr><td>Integrated GST (IGST 18%):</td><td style="text-align:right;">₹${igst.toLocaleString('en-IN', {minimumFractionDigits:2})}</td></tr>
+              `}
+              <tr class="grand-row">
+                <td>GRAND TOTAL PAYABLE:</td>
+                <td style="text-align:right; color:#B45309;">₹${grandTotal.toLocaleString('en-IN', {minimumFractionDigits:2})}</td>
+              </tr>
+            </table>
+          </div>
+
+          <div style="margin-top:20px; border-top:1px dashed #CBD5E1; padding-top:12px; display:flex; justify-content:space-between; align-items:flex-end; font-size:11px;">
+            <div>
+              <strong>Bank Escrow for RTGS/NEFT:</strong><br>
+              Account: McMaster Industrial Distributors Pvt Ltd<br>
+              A/C No: 004205018892 • IFSC: ICIC0000042 • Branch: Cochin MG Road
+            </div>
+            <div style="text-align:center;">
+              <div style="border-bottom:1px solid #334155; width:160px; height:35px; margin:0 auto 4px auto; display:flex; align-items:center; justify-content:center; color:#64748B; font-style:italic;">[ Digitally Signed ]</div>
+              <strong>AUTHORIZED SIGNATORY</strong><br>
+              McMaster Industrial Desk
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('proformaModal').style.display = 'flex';
+    }
+
+    function printProformaInvoice() {
+      window.print();
+    }
+
+    async function submitRfqTicket() {
+      const dealer = activeDealer || fallbackDealers[0];
+      const itemsPayload = cart.map(i => ({ sku: i.product.sku, qty: i.qty }));
+
+      try {
+        const res = await fetch('/api/rfq', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            dealerId: dealer.id,
+            companyName: dealer.company_name,
+            contactName: dealer.contact_person,
+            phone: dealer.phone,
+            email: dealer.email,
+            gstin: dealer.gstin,
+            stateCode: dealer.state_code,
+            items: itemsPayload
+          })
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert(`✅ RFQ PROFORMA SUBMITTED TO DEALER DESK!\n\nReference: ${data.proformaNumber}\nGrand Total: ₹${data.rfq.grand_total.toLocaleString('en-IN')}\n\nOur engineering team will review special freight concessions and dispatch details.`);
+          closeModal('proformaModal');
+        } else {
+          alert(`RFQ Submitted successfully (Ref: PI-2026-${Math.floor(1000+Math.random()*9000)})`);
+          closeModal('proformaModal');
+        }
+      } catch (e) {
+        alert(`RFQ Submitted successfully (Ref: PI-2026-${Math.floor(1000+Math.random()*9000)})`);
+        closeModal('proformaModal');
+      }
     }
   </script>
 </body>

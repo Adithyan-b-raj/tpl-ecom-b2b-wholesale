@@ -1,21 +1,49 @@
 /* ==========================================================================
    BMAD Normalized Design Tokens & Movement Blueprint (theme-tokens.css)
-   Movement  : [E] Industrial Tabular Data-First Order Sheet
-   Archetype : B2B Industrial Fastener & Wholesale SKU Matrix (McMaster-Carr / Uline / DigiKey)
+   Movement  : [E] Industrial Tabular Spec Matrix & Dealer Portal
+   Archetype : B2B Industrial Fastener & Wholesale SKU Matrix (McMaster-Carr / Fastenal / Misumi)
    Reference : https://www.mcmaster.com
    Contract  : whitelabel-and-showroom-contract.md §2 + design-movements-and-layout-blueprints.md
    ========================================================================== */
 
 :root {
-  --font-primary: 'Inter', sans-serif;
-  --font-accent: 'IBM Plex Mono', monospace;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: 'IBM Plex Mono', 'SF Mono', Consolas, Menlo, monospace;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Consolas, Menlo, monospace;
 
   --color-primary: #D97706;
   --brand-primary: var(--color-primary);
+  --color-primary-hover: #B45309;
 
   --color-dark: #0F172A;
   --brand-dark: var(--color-dark);
+
+  --color-slate-900: #0F172A;
+  --color-slate-800: #1E293B;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748B;
+  --color-slate-400: #94A3B8;
+  --color-slate-300: #CBD5E1;
+  --color-slate-200: #E2E8F0;
+  --color-slate-100: #F1F5F9;
+  --color-slate-50: #F8FAFC;
+
+  --color-emerald-500: #10B981;
+  --color-emerald-600: #059669;
+  --color-emerald-50: #ECFDF5;
+
+  --color-amber-500: #F59E0B;
+  --color-amber-600: #D97706;
+  --color-amber-50: #FFFBEB;
+  --color-amber-100: #FEF3C7;
+
+  --color-blue-500: #3B82F6;
+  --color-blue-600: #2563EB;
+  --color-blue-50: #EFF6FF;
+
+  --color-rose-500: #F43F5E;
+  --color-rose-50: #FFF1F2;
 
   --bg-main: #F8FAFC;
   --bg-canvas: #FFFFFF;
@@ -23,9 +51,8 @@
 
   --border-color: #CBD5E1;
   --border-structural: 1px solid #CBD5E1;
-  --shadow-token: none;
-  --grid-gap-desktop: 1px;
-  --grid-gap-mobile: 1px;
+  --shadow-token: 0 1px 3px 0 rgba(15, 23, 42, 0.08);
+  --shadow-popover: 0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
   --radius: 2px;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
